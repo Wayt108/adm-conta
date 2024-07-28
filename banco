@@ -1,0 +1,54 @@
+class ContaBancaria:
+    def __init__(self, titular, saldo=0):
+        self.titular = titular
+        self.saldo = saldo
+
+    def depositar(self, quantia):
+        if quantia > 0:
+            self.saldo += quantia
+            print(f'Depositado: R${quantia:.2f}')
+        else:
+            print('Quantia de depósito deve ser positiva.')
+
+    def sacar(self, quantia):
+        if quantia > 0:
+            if self.saldo >= quantia:
+                self.saldo -= quantia
+                print(f'Sacado: R${quantia:.2f}')
+            else:
+                print('Saldo insuficiente.')
+        else:
+            print('Quantia de saque deve ser positiva.')
+
+    def consultar_saldo(self):
+        print(f'Saldo atual: R${self.saldo:.2f}')
+
+# Exemplo 
+conta = ContaBancaria('apolo', 10900)
+
+# Consultar saldo inicial
+conta.consultar_saldo()
+
+# Depositar dinheiro
+conta.depositar(498)
+
+# Consultar saldo após depósito
+conta.consultar_saldo()
+
+# Tentar sacar mais do que o saldo disponível
+conta.sacar(1990)
+
+# Sacar uma quantia válida
+conta.sacar(212)
+
+# Consultar saldo após saque
+conta.consultar_saldo()
+
+# Tentar depositar uma quantia negativa
+conta.depositar(-68)
+
+# Tentar sacar uma quantia negativa
+conta.sacar(-27)
+
+# Consultar saldo total
+conta.consultar_saldo()
